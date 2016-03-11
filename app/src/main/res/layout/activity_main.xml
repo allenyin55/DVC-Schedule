@@ -9,8 +9,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.allen.dvc_schedule.MainActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mainButton_text"
+        android:id="@+id/firstButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="175dp"
+        android:onClick = "secondScreen" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Schedule" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/title_DVC"
+        android:id="@+id/firstText"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
