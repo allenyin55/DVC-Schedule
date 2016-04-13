@@ -4,4 +4,5 @@
     <string name="mainButton_text">Schedule</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_calendar">Calendar</string>
+    <string name="title_activity_typed_information">TypedInformation</string>
 </resources>

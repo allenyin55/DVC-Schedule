@@ -16,13 +16,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Calendar"
             android:label="@string/title_activity_calendar"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TypedInformation"
+            android:label="@string/title_activity_typed_information"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

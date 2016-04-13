@@ -1,5 +1,6 @@
 package com.example.allen.dvc_schedule;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,5 +17,10 @@ public class Calendar extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
             }
+    public void typedScreen(View view ){
+        Intent intent = new Intent(this, TypedInformation.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        this.startActivity(intent);
+    }
 
 }
