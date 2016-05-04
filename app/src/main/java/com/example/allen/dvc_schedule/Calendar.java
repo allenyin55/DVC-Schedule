@@ -12,9 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ScrollView;
 
-public class Calendar extends Activity {
+public class Calendar extends TypedInformation {
     private TimeTableView mTimaTableView;
     private List<TimeTableModel> mList;
 
@@ -28,6 +29,12 @@ public class Calendar extends Activity {
         mTimaTableView.setTimeTable(mList);
 
             }
+    public void typedScreen(View view ){
+        Intent intent = new Intent(this, TypedInformation.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        this.startActivity(intent);
+    }
+
     private void addList() {
         mList.add(new TimeTableModel(0, 3, 4, 1, "8:20", "10:10", "PHYS",
                 "Huet", "Physical Science", "2-13"));
@@ -51,6 +58,12 @@ public class Calendar extends Activity {
                 "Ms.P", "10", "2-13"));
         mList.add(new TimeTableModel(0, 6, 8, 5, "8:20", "10:10", "ENGL",
                 "Dr.Willis", "11", "2-13"));
+
+    }
+
+    public void AddtoTable(View view){
+        mList.add(new TimeTableModel(0,startTime,endedTime, weekTime, "8:20", "10:10", itemName.getText().toString(),
+                proName.getText().toString(), "11", "2-13"));
     }
 
 

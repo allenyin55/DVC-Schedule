@@ -49,7 +49,7 @@ public class TimeTableView extends LinearLayout {
     private final static int TimeTableWeekNameHeight = 30;
     private LinearLayout mHorizontalWeekLayout;//第一行的星期显示
     private LinearLayout mVerticalWeekLaout;//课程格子
-    private String[] weekname = {"一", "二", "三", "四", "五", "六", "七"};
+    private String[] weekname = {"Mon", "Tue", "Wed", "Thurs", "Fri", "Sat", "Sun"};
     public static String[] colorStr = new String[20];
     int colornum = 0;
     //数据源
