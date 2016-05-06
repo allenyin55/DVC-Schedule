@@ -9,62 +9,56 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
-public class Calendar extends TypedInformation {
-    private TimeTableView mTimaTableView;
+public class Calendar extends AppCompatActivity {
+    private TimeTableView mTimeTableView;
     private List<TimeTableModel> mList;
+    public String className, proName;
+    public int startTime, endTime, weekDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         mList = new ArrayList<TimeTableModel>();
-        mTimaTableView = (TimeTableView) findViewById(R.id.main_timetable_ly);
-        addList();
-        mTimaTableView.setTimeTable(mList);
+        mTimeTableView = (TimeTableView) findViewById(R.id.main_timetable_ly);}
 
-            }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Bundle addClass = getIntent().getExtras();
+
+        if (addClass != null) {
+            className = addClass.getString("className");
+            proName = addClass.getString("proName");
+            startTime = addClass.getInt("startTime");
+            endTime = addClass.getInt("endTime");
+            weekDay = addClass.getInt("weekDay");
+
+
+            mList.add(new TimeTableModel(0, startTime, endTime, weekDay,
+                    "8:20", "10:10", className, proName, "11", "2-13"));
+
+        }
+        mTimeTableView.setTimeTable(mList);
+    }
+
+
+
     public void typedScreen(View view ){
         Intent intent = new Intent(this, TypedInformation.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.startActivity(intent);
     }
 
-    private void addList() {
-        mList.add(new TimeTableModel(0, 3, 4, 1, "8:20", "10:10", "PHYS",
-                "Huet", "Physical Science", "2-13"));
-        mList.add(new TimeTableModel(0, 6, 7, 1, "8:20", "10:10", "MATH",
-                "Liz", "Liberal Arts", "2-13"));
-        mList.add(new TimeTableModel(0, 8, 9, 1, "8:20", "10:10", "CS",
-                "Ms.P", "3", "2-13"));
-        mList.add(new TimeTableModel(0, 6, 7, 2, "8:20", "10:10", "CHEM",
-                "George", "4", "2-13"));
-        mList.add(new TimeTableModel(0, 8, 9, 2, "8:20", "10:10", "ENGL",
-                "Dr.Willis", "5", "2-13"));
-        mList.add(new TimeTableModel(0, 3, 4, 3, "8:20", "10:10", "PHYS",
-                "Huet", "6", "2-13"));
-        mList.add(new TimeTableModel(0, 6, 7, 3, "8:20", "10:10", "CHEM",
-                "George", "7", "2-13"));
-        mList.add(new TimeTableModel(0, 3, 5, 4, "8:20", "10:10", "CS",
-                "Ms.P", "8", "2-13"));
-        mList.add(new TimeTableModel(0, 8, 9, 4, "8:20", "10:10", "MATH",
-                "Liz", "9", "2-13"));
-        mList.add(new TimeTableModel(0, 3, 5, 5, "8:20", "10:10", "CS",
-                "Ms.P", "10", "2-13"));
-        mList.add(new TimeTableModel(0, 6, 8, 5, "8:20", "10:10", "ENGL",
-                "Dr.Willis", "11", "2-13"));
 
     }
 
-    public void AddtoTable(View view){
-        mList.add(new TimeTableModel(0,startTime,endedTime, weekTime, "8:20", "10:10", itemName.getText().toString(),
-                proName.getText().toString(), "11", "2-13"));
-    }
-
-
-}

@@ -13,13 +13,6 @@
         android:id="@+id/button"
         android:onClick = "typedScreen" />
 
-    <TextView
-        android:layout_width="167dp"
-        android:layout_height="84dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="What&apos;s up"
-        android:id="@+id/textView" />
-
     <ScrollView
         android:id="@+id/main_scrollview"
         android:layout_width="match_parent"

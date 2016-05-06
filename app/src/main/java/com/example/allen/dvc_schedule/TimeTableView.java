@@ -50,7 +50,7 @@ public class TimeTableView extends LinearLayout {
     private LinearLayout mHorizontalWeekLayout;//第一行的星期显示
     private LinearLayout mVerticalWeekLaout;//课程格子
     private String[] weekname = {"Mon", "Tue", "Wed", "Thurs", "Fri", "Sat", "Sun"};
-    public static String[] colorStr = new String[20];
+    public static String[] colorStr = new String[99];
     int colornum = 0;
     //数据源
     private List<TimeTableModel> mListTimeTable = new ArrayList<TimeTableModel>();
@@ -302,7 +302,7 @@ public class TimeTableView extends LinearLayout {
      */
     private void addTimeName(String name) {
         boolean isRepeat = true;
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 99 ; i++) {
             if (name.equals(colorStr[i])) {
                 isRepeat = true;
                 break;
@@ -324,7 +324,7 @@ public class TimeTableView extends LinearLayout {
      */
     public static int getColorNum(String name) {
         int num = 0;
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 99; i++) {
             if (name.equals(colorStr[i])) {
                 num = i;
             }
