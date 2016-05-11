@@ -1,6 +1,8 @@
 package com.example.allen.dvc_schedule;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,11 +21,8 @@ public class TypedInformation extends AppCompatActivity {
     public EditText eTime;
     public EditText pName;
     public EditText wTime;
-    public String className;
-    public String proName;
-    public int startTime;
-    public int endedTime;
-    public int weekTime;
+    private List<String> mList = new ArrayList<>();
+    private final static String TAG = "message";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,52 +36,32 @@ public class TypedInformation extends AppCompatActivity {
         wTime = (EditText) findViewById(R.id.dayInput);
     }
 
-
-    public void classInput(View view) {
-        className = cName.getText().toString();
-    }
-
-    public void timeInput(View view) {
-        String timeString = sTime.getText().toString();
-        startTime = Integer.parseInt(timeString);
-    }
-
-    public void endtimeInput(View view) {
-        String endTimeString = eTime.getText().toString();
-        endedTime = Integer.parseInt(endTimeString);
-    }
-
-    public void proInput(View view) {
-        proName = pName.getText().toString();
-    }
-
-    public void dayInput(View view) {
-        String dayTimeString = wTime.getText().toString();
-        weekTime = Integer.parseInt(dayTimeString);
-    }
-
-
-
-
     public void AddtoTable(View view){
         Intent i = new Intent (this, Calendar.class);
 
-        Bundle b = new Bundle();
+        mList.add(0,cName.getText().toString());
+        mList.add(1,pName.getText().toString());
+        mList.add(2,sTime.getText().toString());
+        mList.add(3,eTime.getText().toString());
+        mList.add(4, wTime.getText().toString());
 
-        b.putString("className",className);
-        b.putInt("startTime", startTime);
-        b.putInt("endTime", endedTime);
-        b.putInt("weekDay", weekTime);
-        b.putString("proName", proName);
+        saveArray();
 
-        i.putExtras(b);
         startActivity(i);
-
-
     }
+    public boolean saveArray()
+    {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor mEdit1 = sp.edit();
+        int size = sp.getAll().size();
+
+        for(int i=0;i < mList.size();i++)
+        {
+            mEdit1.putString("Status_" + i + size, mList.get(i));
+        }
 
 
-
-
+        return mEdit1.commit();
+    }
 
 }

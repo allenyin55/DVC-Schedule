@@ -16,53 +16,23 @@
         android:hint="Enter the class you want to add:"
         android:clickable="false" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save Class"
-        android:id="@+id/button2"
-        android:onClick = "classInput"
-        android:layout_below="@+id/classInput"
-        android:layout_alignRight="@+id/timeInput"
-        android:layout_alignEnd="@+id/timeInput" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/timeInput"
-        android:layout_below="@+id/button2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:hint="TIme your class starts" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save time"
-        android:id="@+id/button3"
-        android:layout_below="@+id/timeInput"
-        android:layout_alignRight="@+id/timeInput"
-        android:layout_alignEnd="@+id/timeInput"
-        android:onClick = "timeInput"/>
+        android:hint="TIme your class starts"
+        android:layout_below="@+id/classInput" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/proInput"
         android:hint="Enter your professor"
-        android:layout_below="@+id/button7"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="save"
-        android:id="@+id/button4"
-        android:onClick = "proInput"
-        android:layout_above="@+id/button5"
-        android:layout_alignLeft="@+id/button6"
-        android:layout_alignStart="@+id/button6" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dayInput" />
 
     <Button
         android:layout_width="wrap_content"
@@ -70,44 +40,26 @@
         android:text="Add"
         android:id="@+id/button5"
         android:onClick="AddtoTable"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/proInput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="92dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/endTime"
         android:hint="Time your class over"
-        android:layout_below="@+id/button3"
-        android:layout_alignRight="@+id/button3"
-        android:layout_alignEnd="@+id/button3" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="save"
-        android:id="@+id/button6"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3"
-        android:onClick = "endtimeInput"/>
+        android:layout_below="@+id/timeInput"
+        android:layout_alignRight="@+id/proInput"
+        android:layout_alignEnd="@+id/proInput" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/dayInput"
-        android:layout_below="@+id/button6"
-        android:layout_alignLeft="@+id/endTime"
-        android:layout_alignStart="@+id/endTime"
-        android:hint="which day is your class" />
+        android:hint="which day is your class"
+        android:layout_below="@+id/endTime"
+        android:layout_alignRight="@+id/timeInput"
+        android:layout_alignEnd="@+id/timeInput" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:id="@+id/button7"
-        android:onClick = "dayInput"
-        android:layout_below="@+id/dayInput"
-        android:layout_alignLeft="@+id/button6"
-        android:layout_alignStart="@+id/button6" />
 </RelativeLayout>

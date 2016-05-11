@@ -19,13 +19,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * 课表显示View
+ *
  *
  * @author shallcheek
  */
 public class TimeTableView extends LinearLayout {
     /**
-     * 配色数组
+     *
      */
 
     public static int colors[] = {R.drawable.select_label_san,
@@ -37,22 +37,18 @@ public class TimeTableView extends LinearLayout {
             R.drawable.select_label_sy, R.drawable.select_label_yiwu,
             R.drawable.select_label_yi, R.drawable.select_label_wuw};
     private final static int START = 0;
-    //最大节数
-    public final static int MAXNUM = 12;
-    //显示到星期几
+    public final static int MAXNUM = 24;
     public final static int WEEKNUM = 7;
-    //单个View高度
     private final static int TimeTableHeight = 50;
-    //线的高度
     private final static int TimeTableLineHeight = 2;
     private final static int TimeTableNumWidth = 20;
     private final static int TimeTableWeekNameHeight = 30;
-    private LinearLayout mHorizontalWeekLayout;//第一行的星期显示
-    private LinearLayout mVerticalWeekLaout;//课程格子
+    private LinearLayout mHorizontalWeekLayout;
+    private LinearLayout mVerticalWeekLaout;
     private String[] weekname = {"Mon", "Tue", "Wed", "Thurs", "Fri", "Sat", "Sun"};
-    public static String[] colorStr = new String[99];
+    public static String[] colorStr = new String[22];
     int colornum = 0;
-    //数据源
+
     private List<TimeTableModel> mListTimeTable = new ArrayList<TimeTableModel>();
 
     public TimeTableView(Context context) {
@@ -69,7 +65,7 @@ public class TimeTableView extends LinearLayout {
     }
 
     /**
-     * 横的分界线
+     *
      *
      * @return
      */
@@ -82,7 +78,7 @@ public class TimeTableView extends LinearLayout {
     }
 
     /**
-     * 竖向分界线
+     *
      *
      * @return
      */
@@ -102,17 +98,15 @@ public class TimeTableView extends LinearLayout {
 
         mVerticalWeekLaout = new LinearLayout(getContext());
         mVerticalWeekLaout.setOrientation(HORIZONTAL);
-        //表格
+
         for (int i = 0; i <= WEEKNUM; i++) {
             switch (i) {
                 case 0:
-                    //课表出的0,0格子 空白的
                     TextView mTime = new TextView(getContext());
                     mTime.setHeight(dip2px(TimeTableWeekNameHeight));
                     mTime.setWidth((dip2px(TimeTableNumWidth)));
                     mHorizontalWeekLayout.addView(mTime);
 
-                    //绘制1~MAXNUM
                     LinearLayout mMonday = new LinearLayout(getContext());
                     ViewGroup.LayoutParams mm = new ViewGroup.LayoutParams(dip2px(TimeTableNumWidth), dip2px(MAXNUM * TimeTableHeight) + MAXNUM * 2);
                     mMonday.setLayoutParams(mm);
@@ -137,7 +131,6 @@ public class TimeTableView extends LinearLayout {
                 case 5:
                 case 6:
                 case 7:
-                    // 设置显示星期一 到星期天
                     LinearLayout mHoriView = new LinearLayout(getContext());
                     mHoriView.setOrientation(VERTICAL);
                     TextView mWeekName = new TextView(getContext());
@@ -151,13 +144,11 @@ public class TimeTableView extends LinearLayout {
                     mHorizontalWeekLayout.addView(mHoriView);
 
                     List<TimeTableModel> mListMon = new ArrayList<>();
-                    //遍历出星期1~7的课表
                     for (TimeTableModel timeTableModel : mListTimeTable) {
                         if (timeTableModel.getWeek() == i) {
                             mListMon.add(timeTableModel);
                         }
                     }
-                    //添加
                     LinearLayout mLayout = getTimeTableView(mListMon, i);
                     mLayout.setOrientation(VERTICAL);
                     ViewGroup.LayoutParams linearParams = new ViewGroup.LayoutParams((getViewWidth() - dip2px(20)) / WEEKNUM, LayoutParams.FILL_PARENT);
@@ -199,7 +190,6 @@ public class TimeTableView extends LinearLayout {
             mStartView.addView(mTime);
             mStartView.addView(getWeekTransverseLine());
             final int num = i;
-            //这里可以处理空白处点击添加课表
             mTime.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -212,7 +202,7 @@ public class TimeTableView extends LinearLayout {
     }
 
     /**
-     * 星期一到星期天的课表
+     *
      *
      * @param model
      * @param week
@@ -227,11 +217,9 @@ public class TimeTableView extends LinearLayout {
         } else {
             for (int i = 0; i < modesize; i++) {
                 if (i == 0) {
-                    //添加的0到开始节数的空格
                     mTimeTableView.addView(addStartView(model.get(0).getStartnum(), week, 0));
                     mTimeTableView.addView(getMode(model.get(0)));
                 } else if (model.get(i).getStartnum() - model.get(i - 1).getStartnum() > 0) {
-                    //填充
                     mTimeTableView.addView(addStartView(model.get(i).getStartnum() - model.get(i - 1).getEndnum(), week, model.get(i - 1).getEndnum()));
                     mTimeTableView.addView(getMode(model.get(i)));
                 }
@@ -244,9 +232,9 @@ public class TimeTableView extends LinearLayout {
     }
 
     /**
-     * 获取单个课表View 也可以自定义我这个
      *
-     * @param model 数据类型
+     *
+     *
      * @return
      */
     @SuppressWarnings("deprecation")
@@ -276,7 +264,7 @@ public class TimeTableView extends LinearLayout {
     }
 
     /**
-     * 转换dp
+     *
      *
      * @param dpValue
      * @return
@@ -296,13 +284,12 @@ public class TimeTableView extends LinearLayout {
     }
 
     /**
-     * 输入课表名循环判断是否数组存在该课表 如果存在输出true并退出循环 如果不存在则存入colorSt[20]数组
      *
      * @param name
      */
     private void addTimeName(String name) {
         boolean isRepeat = true;
-        for (int i = 0; i < 99 ; i++) {
+        for (int i = 0; i < 20 ; i++) {
             if (name.equals(colorStr[i])) {
                 isRepeat = true;
                 break;
@@ -317,14 +304,14 @@ public class TimeTableView extends LinearLayout {
     }
 
     /**
-     * 获取数组中的课程名
+     *
      *
      * @param name
      * @return
      */
     public static int getColorNum(String name) {
         int num = 0;
-        for (int i = 0; i < 99; i++) {
+        for (int i = 0; i < 22; i++) {
             if (name.equals(colorStr[i])) {
                 num = i;
             }
