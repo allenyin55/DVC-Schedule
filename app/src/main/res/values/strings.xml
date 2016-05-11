@@ -5,4 +5,7 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_calendar">Calendar</string>
     <string name="title_activity_typed_information">TypedInformation</string>
+    <string name="title_activity_course">Course</string>
+    <string name="course_button_string">course</string>
+
 </resources>
